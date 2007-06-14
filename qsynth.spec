@@ -1,6 +1,6 @@
 %define name	qsynth
-%define version	0.2.5
-%define release %mkrel 5
+%define version	0.2.6
+%define release %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	GUI for fluidsynth soundfont softward synthesizer
@@ -53,7 +53,7 @@ Exec=%{_bindir}/%{name}
 Icon=%{name}
 Terminal=false
 Type=Application
-Categories=X-MandrivaLinux-Multimedia-Sound;AudioVideo;Sequencer;
+Categories=X-MandrivaLinux-Multimedia-Sound;AudioVideo;Audio;Midi;Qt;
 Encoding=UTF-8
 EOF
 
