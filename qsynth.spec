@@ -1,5 +1,5 @@
 %define name	qsynth
-%define version	0.2.6
+%define version	0.3.1
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -13,7 +13,7 @@ License:	GPL
 Group:		Sound
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ImageMagick
-BuildRequires:	qt3-devel fluidsynth-devel
+BuildRequires:	qt4-devel fluidsynth-devel
 Requires:	fluidsynth
 
 %description
@@ -44,19 +44,6 @@ cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
 ?package(%{name}): command="%{name}" icon="%{name}.png" needs="x11" title="QSynth" longtitle="Soft Synth GUI" section="Multimedia/Sound" xdg="true"
 EOF
 
-mkdir -p %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=QSynth
-Comment=Soft Synth GUI
-Exec=%{_bindir}/%{name}
-Icon=%{name}
-Terminal=false
-Type=Application
-Categories=X-MandrivaLinux-Multimedia-Sound;AudioVideo;Audio;Midi;Qt;
-Encoding=UTF-8
-EOF
-
 #icons
 mkdir -p $RPM_BUILD_ROOT/%_liconsdir
 convert -size 48x48 icons/%name.png $RPM_BUILD_ROOT/%_liconsdir/%name.png
@@ -81,7 +68,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog TODO README
 %{_bindir}/%name
 %{_menudir}/%name
-%{_datadir}/applications/mandriva-%{name}.desktop
+%{_datadir}/pixmaps/*
+%{_datadir}/applications/*.desktop
 %{_iconsdir}/*.png
 %{_liconsdir}/%name.png
 %{_iconsdir}/%name.png
