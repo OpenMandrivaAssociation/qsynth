@@ -11,7 +11,6 @@ Source:		http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
 URL:		http://qsynth.sourceforge.net/
 License:	GPL
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	ImageMagick
 BuildRequires:	qt4-devel fluidsynth-devel
 Requires:	fluidsynth
