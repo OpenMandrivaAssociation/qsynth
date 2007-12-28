@@ -1,5 +1,5 @@
 %define name	qsynth
-%define version	0.3.1
+%define version	0.3.2
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -7,7 +7,7 @@ Summary: 	GUI for fluidsynth soundfont softward synthesizer
 Version: 	%{version}
 Release: 	%{release}
 
-Source:		http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source:		http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 URL:		http://qsynth.sourceforge.net/
 License:	GPL
 Group:		Sound
