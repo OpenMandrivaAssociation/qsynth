@@ -39,10 +39,6 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="%{name}.png" needs="x11" title="QSynth" longtitle="Soft Synth GUI" section="Multimedia/Sound" xdg="true"
-EOF
 
 #icons
 mkdir -p $RPM_BUILD_ROOT/%_liconsdir
@@ -67,7 +63,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc AUTHORS ChangeLog TODO README
 %{_bindir}/%name
-%{_menudir}/%name
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/*.desktop
 %{_iconsdir}/*.png
