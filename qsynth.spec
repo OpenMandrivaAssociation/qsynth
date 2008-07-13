@@ -1,75 +1,42 @@
-%define name	qsynth
-%define version	0.3.2
-%define release %mkrel 1
-
-Name: 	 	%{name}
-Summary: 	GUI for fluidsynth soundfont softward synthesizer
-Version: 	%{version}
-Release: 	%{release}
-
-Source:		http://prdownloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-URL:		http://qsynth.sourceforge.net/
-License:	GPL
+Summary:	Qt GUI Interface for FluidSynth
+Name:     	qsynth
+Version:	0.3.3
+Release:	%mkrel 1
+License:	GPLv2+
 Group:		Sound
-BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	ImageMagick
-BuildRequires:	qt4-devel fluidsynth-devel
-Requires:	fluidsynth
+Source0: 	http://downloads.sourceforge.net/qsynth/%name-%version.tar.gz
+Patch0:		qsynth-0.3.3-fix-locale-install.patch
+URL:		http://qsyth.sourceforge.net/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	qt4-devel
+BuildRequires:	qt4-linguist
+BuildRequires:	fluidsynth-devel
 
 %description
-QSynth is a fluidsynth GUI front-end application written in C++ around the Qt3
-toolkit using Qt Designer. Eventually it may evolve into a softsynth
-management application allowing the user to control and manage a variety of
-command line softsynth but for the moment it wraps the excellent FluidSynth.
-FluidSynth is a command line software synthesiser based on the Soundfont
-specification.
+Qsynth is a fluidsynth GUI front-end application written in C++ around
+the Qt4 toolkit using Qt Designer. Eventually it may evolve into a
+softsynth management application allowing the user to control and manage
+a variety of command line softsynth but for the moment it wraps the
+excellent FluidSynth.
 
 %prep
 %setup -q
+%patch0 -p0 -b .locale
 
 %build
-export QTDIR=/usr/lib/qt3
-export PATH=/usr/lib/qt3/bin:$PATH
-perl -pi -e 's/\$QTDIR\/lib/\$QTDIR\/%{_lib}/' configure
 %configure2_5x
-%make
-										
+%make CXXFLAGS="%{optflags}" LFLAGS="%{ldflags}"
+
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
-
-#menu
-
-#icons
-mkdir -p $RPM_BUILD_ROOT/%_liconsdir
-convert -size 48x48 icons/%name.png $RPM_BUILD_ROOT/%_liconsdir/%name.png
-mkdir -p $RPM_BUILD_ROOT/%_iconsdir
-convert -size 32x32 icons/%name.png $RPM_BUILD_ROOT/%_iconsdir/%name.png
-mkdir -p $RPM_BUILD_ROOT/%_miconsdir
-convert -size 16x16 icons/%name.png $RPM_BUILD_ROOT/%_miconsdir/%name.png
-
-%find_lang %name
+%makeinstall_std
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%if %mdkversion < 200900
-%post
-%update_menus
-%endif
-		
-%if %mdkversion < 200900
-%postun
-%clean_menus
-%endif
-
-%files -f %{name}.lang
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog TODO README
+%files
+%defattr(-, root, root)
 %{_bindir}/%name
-%{_datadir}/pixmaps/*
+%{_datadir}/%name
 %{_datadir}/applications/*.desktop
-%{_iconsdir}/*.png
-%{_liconsdir}/%name.png
-%{_iconsdir}/%name.png
-%{_miconsdir}/%name.png
+%{_datadir}/pixmaps/*.png
