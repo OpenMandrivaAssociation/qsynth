@@ -1,7 +1,7 @@
 Summary:	Qt GUI Interface for FluidSynth
 Name:     	qsynth
 Version:	0.3.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Sound
 Source0: 	http://downloads.sourceforge.net/qsynth/%name-%version.tar.gz
@@ -11,6 +11,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel
 BuildRequires:	qt4-linguist
 BuildRequires:	fluidsynth-devel
+Requires:	fluidsynth
 
 %description
 Qsynth is a fluidsynth GUI front-end application written in C++ around
