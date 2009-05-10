@@ -1,7 +1,7 @@
 Summary:	Qt GUI Interface for FluidSynth
 Name:     	qsynth
 Version:	0.3.4
-Release:	%mkrel 2
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		Sound
 Source0: 	http://downloads.sourceforge.net/qsynth/%name-%version.tar.gz
@@ -26,7 +26,7 @@ excellent FluidSynth.
 
 %build
 %configure2_5x
-%make CXXFLAGS="%{optflags}" LFLAGS="%{ldflags}"
+make CXXFLAGS="%{optflags}" LFLAGS="%{ldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
