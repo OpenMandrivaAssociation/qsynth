@@ -1,17 +1,21 @@
-Summary:	Qt GUI Interface for FluidSynth
-Name:     	qsynth
-Version:	0.3.4
-Release:	%mkrel 3
-License:	GPLv2+
-Group:		Sound
-Source0: 	http://downloads.sourceforge.net/qsynth/%name-%version.tar.gz
-Patch0:		qsynth-0.3.3-fix-locale-install.patch
-URL:		http://qsyth.sourceforge.net/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+%define name    qsynth
+%define version 0.3.5
+%define release %mkrel 1 
+
+Name:           %{name} 
+Summary:		Qt GUI Interface for FluidSynth
+Version:        %{version} 
+Release:        %{release}
+
+License:		GPLv2+
+Group:			Sound
+Source0: 		http://downloads.sourceforge.net/qsynth/%name-%version.tar.gz
+URL:			http://qsyth.sourceforge.net/
+BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	qt4-devel
 BuildRequires:	qt4-linguist
 BuildRequires:	fluidsynth-devel
-Requires:	fluidsynth
+Requires:		fluidsynth
 
 %description
 Qsynth is a fluidsynth GUI front-end application written in C++ around
@@ -22,8 +26,10 @@ excellent FluidSynth.
 
 %prep
 %setup -q
-%patch0 -p0 -b .locale
 
+# Fix locale installation path
+perl -pi -e 's/\/share\/locale/\/share\/\$(name)\/locale/g' Makefile.in
+perl -pi -e 's/\/share\/locale/\/share\/qsynth\/locale/g' src/main.cpp
 %build
 %configure2_5x
 make CXXFLAGS="%{optflags}" LFLAGS="%{ldflags}"
