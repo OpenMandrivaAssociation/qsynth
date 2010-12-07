@@ -1,6 +1,6 @@
 %define name    qsynth
 %define version 0.3.5
-%define release %mkrel 2
+%define release %mkrel 3
 
 Name:           %{name} 
 Summary:        Qt GUI Interface for FluidSynth
