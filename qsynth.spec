@@ -17,6 +17,7 @@ BuildRequires:  qt4-devel
 BuildRequires:  qt4-linguist
 BuildRequires:  fluidsynth-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  cmake
 Requires:       fluidsynth
 
 %description
