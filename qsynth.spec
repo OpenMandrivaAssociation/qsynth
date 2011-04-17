@@ -1,10 +1,10 @@
 %define name    qsynth
-%define version 0.3.5
-%define release %mkrel 3
+%define version 0.3.6
+%define release %mkrel 1
 
-Name:           %{name} 
+Name:           %{name}
 Summary:        Qt GUI Interface for FluidSynth
-Version:        %{version} 
+Version:        %{version}
 Release:        %{release}
 
 License:        GPLv2+
@@ -29,16 +29,18 @@ excellent FluidSynth.
 %prep
 %setup -q
 
-# Fix locale installation path
-perl -pi -e 's/\/share\/locale/\/share\/\$(name)\/locale/g' Makefile.in
-perl -pi -e 's/\/share\/locale/\/share\/qsynth\/locale/g' src/main.cpp
+
 %build
-%configure2_5x
-make CXXFLAGS="%{optflags}" LFLAGS="%{ldflags}"
+# Fix locale installation path
+perl -pi -e 's/share\/locale/share\/qsynth\/locale/g' src/CMakeLists.txt
+perl -pi -e 's/share\/locale/share\/qsynth\/locale/g' src/qsynth.cpp
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} .
+%make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
+
 # Fix the .desktop file by removing
 # 2 non-Mdv key and 2 non-standard categories
 desktop-file-install \
@@ -53,11 +55,11 @@ desktop-file-install \
 %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-, root, root)
 %{_bindir}/%name
 %{_datadir}/%name
 %{_datadir}/applications/*.desktop
-%{_datadir}/pixmaps/*.png
+%{_datadir}/pixmaps/qsynth.png
