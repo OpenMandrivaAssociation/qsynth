@@ -1,6 +1,7 @@
 %define	name	qsynth
 %define	version	0.3.6
 %define	release	2
+%define debug_package %{nil}
 
 Name:		%{name}
 Summary:        Qt GUI Interface for FluidSynth
