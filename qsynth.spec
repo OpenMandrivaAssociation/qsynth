@@ -13,7 +13,7 @@ Source0:		http://downloads.sourceforge.net/qsynth/%{name}-%{version}.tar.gz
 URL:            http://%{name}.sourceforge.net/
 BuildRequires:	qt4-devel >= 4.2.0
 BuildRequires:	qt4-linguist
-BuildRequires:	libx11-devel
+BuildRequires:	pkgconfig(x11)
 BuildRequires:	fluidsynth-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	cmake
