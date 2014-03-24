@@ -1,15 +1,12 @@
-%define	name	qsynth
-%define	version	0.3.6
-%define	release	2
 %define debug_package %{nil}
 
-Name:		%{name}
+Name:		qsynth
 Summary:        Qt GUI Interface for FluidSynth
-Version:		%{version}
-Release:		%{release}
+Version:		0.3.8
+Release:		1
 License:		GPLv2+
 Group:		Sound
-Source0:		http://downloads.sourceforge.net/qsynth/%{name}-%{version}.tar.gz
+Source0:		http://sourceforge.net/projects/qsynth/files/qsynth/0.3.8/%{name}-%{version}.tar.gz
 URL:            http://%{name}.sourceforge.net/
 BuildRequires:	qt4-devel >= 4.2.0
 BuildRequires:	qt4-linguist
@@ -42,7 +39,6 @@ make
 
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 # Fix the .desktop file by removing
@@ -157,7 +153,7 @@ desktop-file-install \
 - Spec change to build on x86_64
 - 0.2.5
 
-* Tue Oct 04 2005 Nicolas Lécureuil <neoclust@mandriva.org> 0.2.4-2mdk
+* Tue Oct 04 2005 Nicolas LÃ©cureuil <neoclust@mandriva.org> 0.2.4-2mdk
 - Fix BuildRequires
 
 * Mon Oct 03 2005 Lenny Cartier <lenny@mandriva.com> 0.2.4-1mdk
@@ -185,3 +181,4 @@ desktop-file-install \
 
 * Sat Dec 27 2003 Austin Acton <aacton@yorku.ca> 0.0.3-1mdk
 - initial package
+
