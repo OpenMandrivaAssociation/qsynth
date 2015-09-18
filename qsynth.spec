@@ -2,14 +2,14 @@
 
 Name:		qsynth
 Summary:        Qt GUI Interface for FluidSynth
-Version:		0.3.8
-Release:		2
+Version:		0.4.0
+Release:		1
 License:		GPLv2+
 Group:		Sound
 Source0:		http://sourceforge.net/projects/qsynth/files/qsynth/0.3.8/%{name}-%{version}.tar.gz
 URL:            http://%{name}.sourceforge.net/
-BuildRequires:	qt4-devel >= 4.2.0
-BuildRequires:	qt4-linguist
+BuildRequires:	qt5-devel
+BuildRequires:	qt5-linguist
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	fluidsynth-devel
 BuildRequires:	desktop-file-utils
@@ -57,11 +57,12 @@ desktop-file-install \
 
 %files
 %{_bindir}/%{name}
-%{_datadir}/locale/*.qm
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/appdata/qsynth.appdata.xml
 %{_iconsdir}/hicolor/32x32/apps/%{name}.png
 #{_datadir}/pixmaps/%%{name}.png
-
+%{_datadir}/qsynth
+%{_mandir}/man1/*
 
 %changelog
 * Mon Oct 29 2012 Giovanni Mariani <mc2374@mclink.it> 0.3.6-2
