@@ -11,6 +11,7 @@ URL:            http://%{name}.sourceforge.net/
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-linguist
 BuildRequires:	qt5-linguist-tools
+BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	fluidsynth-devel
 BuildRequires:	desktop-file-utils
