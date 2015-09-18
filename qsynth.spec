@@ -10,6 +10,7 @@ Source0:		http://sourceforge.net/projects/qsynth/files/qsynth/0.3.8/%{name}-%{ve
 URL:            http://%{name}.sourceforge.net/
 BuildRequires:	qt5-devel
 BuildRequires:	qt5-linguist
+BuildRequires:	qt5-linguist-tools
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	fluidsynth-devel
 BuildRequires:	desktop-file-utils
