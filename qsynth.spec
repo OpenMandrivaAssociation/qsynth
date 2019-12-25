@@ -8,6 +8,8 @@ License:		GPLv2+
 Group:		Sound
 Source0:		http://sourceforge.net/projects/qsynth/files/qsynth/0.3.8/%{name}-%{version}.tar.gz
 URL:            http://%{name}.sourceforge.net/
+BuildRequires:  qmake5
+BuildRequires:  qt5-qtchooser
 BuildRequires:  qt5-qttools
 BuildRequires:	desktop-file-utils
 BuildRequires:	pkgconfig(fluidsynth)
