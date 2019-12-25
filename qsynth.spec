@@ -2,20 +2,22 @@
 
 Name:		qsynth
 Summary:        Qt GUI Interface for FluidSynth
-Version:		0.4.0
-Release:		1
+Version:        0.6.1
+Release:        1
 License:		GPLv2+
 Group:		Sound
 Source0:		http://sourceforge.net/projects/qsynth/files/qsynth/0.3.8/%{name}-%{version}.tar.gz
 URL:            http://%{name}.sourceforge.net/
-BuildRequires:	qt5-devel
+BuildRequires:  qt5-qttools
+BuildRequires:	desktop-file-utils
+BuildRequires:	pkgconfig(fluidsynth)
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	qt5-linguist
 BuildRequires:	qt5-linguist-tools
 BuildRequires:	pkgconfig(Qt5X11Extras)
-BuildRequires:	pkgconfig(x11)
-BuildRequires:	fluidsynth-devel
-BuildRequires:	desktop-file-utils
-BuildRequires:	cmake
+
 Requires:	fluidsynth
 
 %description
@@ -29,42 +31,33 @@ excellent FluidSynth softsynth.
 %prep
 %setup -q
 
-
 %build
-# Fix locale installation path
-perl -pi -e 's/share\/locale/share\/qsynth\/locale/g' src/CMakeLists.txt
-perl -pi -e 's/share\/locale/share\/qsynth\/locale/g' src/qsynth.cpp
-%configure2_5x
-#cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} .
-# (gvm) To avoid random build errors with translation files
-make
+%configure2_5x \
+	--localedir=%{_datadir}/%{name}/translations \
+	--enable-debug
 
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # Fix the .desktop file by removing
 # 2 non-Mdv key and 2 non-standard categories
 desktop-file-install \
     --remove-key="X-SuSE-translate" \
-    --remove-key="Version" \
-    --remove-category="MIDI" \
-    --remove-category="ALSA" \
-    --remove-category="JACK" \
     --add-category="Midi" \
     --add-category="X-MandrivaLinux-Sound" \
     --dir %{buildroot}%{_datadir}/applications \
 %{buildroot}%{_datadir}/applications/%{name}.desktop
 
-
 %files
+%doc AUTHORS ChangeLog README TODO TRANSLATORS
 %{_bindir}/%{name}
+%{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/appdata/qsynth.appdata.xml
-%{_iconsdir}/hicolor/32x32/apps/%{name}.png
-#{_datadir}/pixmaps/%%{name}.png
-%{_datadir}/qsynth
-%{_mandir}/man1/*
+%{_datadir}/metainfo/%{name}.appdata.xml
+%{_iconsdir}/*/*/*/%{name}.png
+%{_mandir}/man1/%{name}*.1*
 
 %changelog
 * Mon Oct 29 2012 Giovanni Mariani <mc2374@mclink.it> 0.3.6-2
