@@ -1,5 +1,2 @@
-removed_sources:
-  qsynth-0.3.6.tar.gz: dffba1d9125466ae4f6c3e408d2c8d9a6e884f4b
-  qsynth-0.3.8.tar.gz: b8e66ad7cc5b40ab024434aa03682a6c864754f2
 sources:
-  qsynth-0.4.0.tar.gz: a05399aa9f841a18b605c846c44a653b781773e1
+  qsynth-0.6.1.tar.gz: da826da5590d339394849e9bd812cb30e473efd5
