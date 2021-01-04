@@ -2,7 +2,7 @@
 
 Name:		qsynth
 Summary:        Qt GUI Interface for FluidSynth
-Version:        0.6.1
+Version:        0.9.0
 Release:        1
 License:		GPLv2+
 Group:		Sound
