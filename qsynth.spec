@@ -31,10 +31,10 @@ excellent FluidSynth softsynth.
 
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure2_5x \
+%configure \
 	--localedir=%{_datadir}/%{name}/translations \
 	--enable-debug
 
@@ -58,8 +58,10 @@ desktop-file-install \
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/metainfo/%{name}.appdata.xml
+%{_iconsdir}/hicolor/scalable/apps/qsynth.svg
 %{_iconsdir}/*/*/*/%{name}.png
 %{_mandir}/man1/%{name}*.1*
+%{_mandir}/*/man1/qsynth.1.*
 
 %changelog
 * Mon Oct 29 2012 Giovanni Mariani <mc2374@mclink.it> 0.3.6-2
