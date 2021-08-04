@@ -1,9 +1,10 @@
-%define debug_package %{nil}
+#define debug_package %{nil}
+%define _empty_manifest_terminate_build 0
 
 Name:		qsynth
 Summary:        Qt GUI Interface for FluidSynth
-Version:        0.9.0
-Release:        2
+Version:        0.9.4
+Release:        1
 License:		GPLv2+
 Group:		Sound
 Source0:		http://sourceforge.net/projects/qsynth/files/qsynth/0.3.8/%{name}-%{version}.tar.gz
