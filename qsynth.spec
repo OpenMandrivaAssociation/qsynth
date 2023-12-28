@@ -59,10 +59,10 @@ desktop-file-install \
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_datadir}/applications/org.rncbc.%{name}.desktop
-#{_datadir}/metainfo/org.rncbc.%{name}.appdata.xml
+%{_datadir}/metainfo/org.rncbc.qsynth.metainfo.xml
 %{_iconsdir}/hicolor/scalable/apps/org.rncbc.qsynth.svg
 %{_iconsdir}/*/*/*/org.rncbc.%{name}.png
-#{_mandir}/man1/%org.rncbc.{name}*.1*
+%{_mandir}/man1/qsynth.1.*
 %{_mandir}/*/man1/qsynth.1.*
 
 %changelog
