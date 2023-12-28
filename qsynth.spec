@@ -20,6 +20,8 @@ BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:	cmake(Qt6Widgets)
 BuildRequires:	qt6-qtbase-theme-gtk3
+BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(vulkan)
 
 Requires:	fluidsynth
 
