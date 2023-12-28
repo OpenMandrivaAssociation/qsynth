@@ -52,17 +52,17 @@ desktop-file-install \
     --add-category="Midi" \
     --add-category="X-MandrivaLinux-Sound" \
     --dir %{buildroot}%{_datadir}/applications \
-%{buildroot}%{_datadir}/applications/%{name}.desktop
+%{buildroot}%{_datadir}/applications/org.rncbc.qsynth.desktop
 
 %files
 %doc AUTHORS ChangeLog README TODO TRANSLATORS
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/metainfo/%{name}.appdata.xml
-%{_iconsdir}/hicolor/scalable/apps/qsynth.svg
-%{_iconsdir}/*/*/*/%{name}.png
-%{_mandir}/man1/%{name}*.1*
+%{_datadir}/applications/org.rncbc.%{name}.desktop
+%{_datadir}/metainfo/org.rncbc.%{name}.appdata.xml
+%{_iconsdir}/hicolor/scalable/apps/org.rncbc.qsynth.svg
+%{_iconsdir}/*/*/*/org.rncbc.%{name}.png
+%{_mandir}/man1/%org.rncbc.{name}*.1*
 %{_mandir}/*/man1/qsynth.1.*
 
 %changelog
