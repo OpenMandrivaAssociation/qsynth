@@ -3,23 +3,21 @@
 
 Name:		qsynth
 Summary:        Qt GUI Interface for FluidSynth
-Version:        0.9.4
+Version:        0.9.12
 Release:        1
-License:		GPLv2+
+License:	GPLv2+
 Group:		Sound
-Source0:		http://sourceforge.net/projects/qsynth/files/qsynth/0.3.8/%{name}-%{version}.tar.gz
-URL:            http://%{name}.sourceforge.net/
-BuildRequires:  qmake5
-BuildRequires:  qt5-qtchooser
-BuildRequires:  qt5-qttools
+Source0:	https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/%{name}-%{version}.tar.gz
+URL:            https://%{name}.sourceforge.net/
+BuildRequires:	cmake
 BuildRequires:	desktop-file-utils
 BuildRequires:	pkgconfig(fluidsynth)
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Qt5X11Extras)
-BuildRequires:	qt5-linguist
-BuildRequires:	qt5-linguist-tools
-BuildRequires:	pkgconfig(Qt5X11Extras)
+BuildRequires:	cmake(Qt6)
+BuildRequires:	qmake-qt6
+BuildRequires:	cmake(Qt6LinguistTools)
+BuildRequires:	cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:	cmake(Qt6Widgets)
 
 Requires:	fluidsynth
 
@@ -35,14 +33,13 @@ excellent FluidSynth softsynth.
 %autosetup -p1
 
 %build
-%configure \
-	--localedir=%{_datadir}/%{name}/translations \
-	--enable-debug
+%cmake \
+        -DCONFIG_QT6=yes
 
 %make_build
 
 %install
-%make_install
+%make_install -C build
 
 # Fix the .desktop file by removing
 # 2 non-Mdv key and 2 non-standard categories
