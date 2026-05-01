@@ -3,7 +3,7 @@
 
 Summary:		Qt GUI Interface for FluidSynth
 Name:		qsynth
-Version:		1.0.3
+Version:		1.0.5
 Release:		1
 License:		GPLv2+
 Group:		Sound
@@ -12,6 +12,7 @@ Source0:	https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/%{name}
 BuildRequires:		cmake >= 3.15
 BuildRequires:		desktop-file-utils
 BuildRequires:		git
+BuildRequires:		make
 BuildRequires:		qmake-qt6
 BuildRequires:		qt6-qtbase-theme-gtk3
 BuildRequires:		cmake(Qt6)
@@ -63,5 +64,5 @@ excellent fluidSynth softsynth.
 desktop-file-edit \
 	--remove-key="X-SuSE-translate" \
 	--add-category="Midi" \
-	--add-category="X-MandrivaLinux-Sound" \
+	--add-category="X-OpenMandriva-Sound" \
 	%{buildroot}%{_datadir}/applications/org.rncbc.%{name}.desktop
