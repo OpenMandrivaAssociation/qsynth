@@ -3,11 +3,11 @@
 
 Summary:		Qt GUI Interface for FluidSynth
 Name:		qsynth
-Version:		1.0.5
+Version:		1.0.6
 Release:		1
 License:		GPLv2+
 Group:		Sound
-Url:		https://%{name}.sourceforge.net/
+Url:		https://qsynth.sourceforge.net/
 Source0:	https://sourceforge.net/projects/qsynth/files/qsynth/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:		cmake >= 3.15
 BuildRequires:		desktop-file-utils
@@ -60,7 +60,7 @@ excellent fluidSynth softsynth.
 %install
 %make_install -C build
 
-# Fix the .desktop
+# Fix the .desktop file
 desktop-file-edit \
 	--remove-key="X-SuSE-translate" \
 	--add-category="Midi" \
